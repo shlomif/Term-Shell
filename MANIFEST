@@ -1,0 +1,10 @@
+Changes
+MANIFEST
+Makefile.PL
+README
+Shell.pm
+examples/psh.pl
+lib/Term/Shell.pod
+test.pl
+t/01require.t
+t/02default.t

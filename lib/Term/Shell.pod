@@ -618,10 +618,6 @@ page()
 Prints C<$txt> through a pager, prompting the user to press a key for the next
 screen full of text.
 
-Currently, this just prints out the text without any paging at all. The next
-version will have an internal pager, plus the ability to use an external
-pager. See L<BUGS AND DEFICIENCIES>.
-
 =item 13
 
 line()
@@ -976,19 +972,7 @@ The version of Term::Shell you are running under.
 
 =head1 BUGS AND DEFICIENCIES
 
-There are bound to be some bugs lurking about. Here are the things I know I
-haven't done:
-
-=over 4
-
-=item 1
-
-page()
-
-Currently page() just prints its text to the screen. This should really, um,
-page the text, either through an external program or by itself.
-
-=back
+There are bound to be some bugs lurking about.
 
 If you find bugs, please send them to C<NEILW@cpan.org>.
 

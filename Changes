@@ -1,3 +1,6 @@
+0.02  Fri Feb 23 06:36:03 PST 2007
+	- Fix CPAN bug id 2463: help now unconditionally calls $o->summary()
+
 0.01  Fri Jan 25 12:15:25 PST 2002	@67
 	- Documentation updates
 	- Read the README

@@ -8,3 +8,5 @@ lib/Term/Shell.pod
 test.pl
 t/01require.t
 t/02default.t
+t/03catchsmry.t
+META.yml                                 Module meta-data (added by MakeMaker)

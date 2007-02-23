@@ -92,7 +92,8 @@ sub run_attribs {
 
 package main;
 
-if ($ENV{TEST_INTERACTIVE} or not exists $ENV{MAKELEVEL}) {
+if ($ENV{TEST_INTERACTIVE} or not (exists $ENV{MAKELEVEL} or exists $ENV{__MKLVL__}))
+{
     print <<END;
 ==============================================================================
 Type 'help' to see a list of commands or help topics. If your terminal
@@ -102,7 +103,10 @@ be able to hit tab to complete the command-line.
 Have fun!
 ==============================================================================
 END
-    'app'->new('default')->cmdloop;
+    my $app = app->new('default');
+    my $term = $app->term;
+    warn "Using term $term\n";
+    $app->cmdloop;
 }
 else {
     print <<END;

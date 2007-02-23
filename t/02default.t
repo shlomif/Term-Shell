@@ -24,11 +24,11 @@ $shell = MyShell->new;
 $cmds = [$shell->possible_actions('e', 'run')];
 ok(ref($cmds), 'ARRAY');
 ok($#$cmds, 0);
-ok($cmds->[0], 'run_exit');
+ok($cmds->[0], 'exit');
 
 $cmds = [$shell->possible_actions('h', 'run')];
 ok($#$cmds, 0);
-ok($cmds->[0], 'run_help');
+ok($cmds->[0], 'help');
 
 $cmds = [$shell->possible_actions('c', 'run')];
 ok($#$cmds, 1);
@@ -38,12 +38,12 @@ ok($#$cmds, 1);
 #=============================================================================
 $cmds = [$shell->possible_actions('e', 'help')];
 ok($#$cmds, 0);
-ok($cmds->[0], 'help_exit');
+ok($cmds->[0], 'exit');
 
 $cmds = [$shell->possible_actions('h', 'help')];
 ok($#$cmds, 0);
-ok($cmds->[0], 'help_help');
+ok($cmds->[0], 'help');
 
 $cmds = [$shell->possible_actions('c', 'help')];
 ok($#$cmds, 0);
-ok($cmds->[0], 'help_command1');
+ok($cmds->[0], 'command1');

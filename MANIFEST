@@ -1,9 +1,11 @@
+Build.PL
 Changes
 MANIFEST
 Makefile.PL
 README
 examples/old-test.pl
 examples/psh.pl
+inc/Test/Run/Builder.pm
 lib/Term/Shell.pm
 lib/Term/Shell.pod
 t/01require.t
@@ -11,3 +13,4 @@ t/02default.t
 t/03catchsmry.t
 t/pod.t
 META.yml                                 Module meta-data (added by MakeMaker)
+META.json

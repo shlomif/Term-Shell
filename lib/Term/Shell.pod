@@ -96,7 +96,7 @@ that doesn't start with a prefix listed here.
 
 =over 4
 
-=item 1 
+=item 1
 
 run_foo()
 
@@ -208,6 +208,8 @@ The C<catch_> methods may do anything the original function would have done.
 If you want, you can implement all the commands in it, but that means you're
 doing more work than you have to. Be lazy.
 
+=back
+
 =head2 When you want something done right...
 
 You sometimes have to do it yourself. Introducing add_handlers(). Naturally,
@@ -240,8 +242,6 @@ the same thing from there. You'd have to override C<comp_> so that it would
 complete on "foozle" and "fuzz". The advantage to this method is that it adds
 the methods to the list of commands, so they show up in the help menu I<and>
 you get completion for free.
-
-=back
 
 =head1 Removing Commands from Your Shell
 

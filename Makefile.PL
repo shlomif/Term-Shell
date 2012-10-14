@@ -5,5 +5,5 @@ use warnings;
 
 WriteMakefile(
     NAME		=> 'Term::Shell',
-    VERSION_FROM	=> 'Shell.pm',
+    VERSION_FROM	=> 'lib/Term/Shell.pm',
 );

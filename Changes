@@ -1,3 +1,8 @@
+    - Moved test.pl under examples so it won't interfere with the building
+    and testing.
+        - See https://rt.cpan.org/Public/Bug/Display.html?id=40771
+        - Thanks to CHORNY and praveenkumar for the reports.
+
 0.02  Fri Feb 23 06:36:03 PST 2007
 	- Fix CPAN bug id 2463: help now unconditionally calls $o->summary()
 

@@ -1,6 +1,7 @@
 #!perl -w
 
-package app;
+package App;
+
 use strict;
 use base qw(Term::Shell);
 use Data::Dumper;
@@ -103,7 +104,7 @@ be able to hit tab to complete the command-line.
 Have fun!
 ==============================================================================
 END
-    my $app = app->new('default');
+    my $app = App->new('default');
     my $term = $app->term;
     warn "Using term $term\n";
     $app->cmdloop;

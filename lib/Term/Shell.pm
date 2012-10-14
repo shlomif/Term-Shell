@@ -5,7 +5,7 @@ use warnings;
 use Data::Dumper;
 use Term::ReadLine;
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 #=============================================================================
 # Term::Shell API methods

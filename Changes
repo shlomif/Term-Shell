@@ -1,3 +1,4 @@
+0.03  Sun 14 Oct 11:03:52 IST 2012
     - Moved test.pl under examples so it won't interfere with the building
     and testing.
         - See https://rt.cpan.org/Public/Bug/Display.html?id=40771

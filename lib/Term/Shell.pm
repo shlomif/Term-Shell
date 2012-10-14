@@ -5,7 +5,9 @@ use warnings;
 use Data::Dumper;
 use Term::ReadLine;
 
-our $VERSION = '0.03';
+use vars qw($VERSION);
+
+$VERSION = '0.03';
 
 #=============================================================================
 # Term::Shell API methods
@@ -908,6 +910,10 @@ sub comp_ {
 
 package Term::Shell::OnScopeLeave;
 
+use vars qw($VERSION);
+
+$VERSION = '0.03';
+
 sub new {
     return bless [@_[1 .. $#_]], ref($_[0]) || $_[0];
 }
@@ -915,8 +921,10 @@ sub new {
 sub DESTROY {
     my $o = shift;
     for my $c (@$o) {
-	&$c;
+        $c->();
     }
+
+    return;
 }
 
 1;

@@ -1,6 +1,7 @@
-use Test;
+use strict;
+use warnings;
 
-BEGIN { plan tests => 12 }
+use Test::More tests => 6;
 
 package MyShell;
 use base qw(Term::Shell);
@@ -16,34 +17,35 @@ END
 sub run_command2 { print "command2\n"; }
 
 package main;
-$shell = MyShell->new;
+
+my $shell = MyShell->new;
 
 #=============================================================================
 # Command completions
 #=============================================================================
-$cmds = [$shell->possible_actions('e', 'run')];
-ok(ref($cmds), 'ARRAY');
-ok($#$cmds, 0);
-ok($cmds->[0], 'exit');
+my $cmds = [$shell->possible_actions('e', 'run')];
+# TEST
+is_deeply ($cmds, ['exit'], "e command");
 
 $cmds = [$shell->possible_actions('h', 'run')];
-ok($#$cmds, 0);
-ok($cmds->[0], 'help');
+# TEST
+is_deeply ($cmds, ['help'], "help command");
 
 $cmds = [$shell->possible_actions('c', 'run')];
-ok($#$cmds, 1);
+# TEST
+is(scalar(@$cmds), 2, "c run");
 
 #=============================================================================
 # Help completions
 #=============================================================================
 $cmds = [$shell->possible_actions('e', 'help')];
-ok($#$cmds, 0);
-ok($cmds->[0], 'exit');
+# TEST
+is_deeply ($cmds, ['exit'], "e completions");
 
 $cmds = [$shell->possible_actions('h', 'help')];
-ok($#$cmds, 0);
-ok($cmds->[0], 'help');
+# TEST
+is_deeply ($cmds, ['help'], 'h completions');
 
 $cmds = [$shell->possible_actions('c', 'help')];
-ok($#$cmds, 0);
-ok($cmds->[0], 'command1');
+# TEST
+is_deeply ($cmds, ['command1'], 'command1 completions');

@@ -1,11 +1,11 @@
-use Test;
+use strict;
+use warnings;
 
-BEGIN { plan tests => 2 }
+use Test::More tests => 1;
 
 use Term::Shell;
 
-BEGIN { ok(1) }
+my $shell = Term::Shell->new;
 
-$shell = Term::Shell->new;
-
-ok($shell);
+# TEST
+ok ($shell, "A Term::Shell instance was initialised.");

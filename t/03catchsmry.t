@@ -1,4 +1,6 @@
 use strict;
+use warnings;
+
 use Test::More tests => 1;
 
 require Term::Shell;
@@ -19,7 +21,7 @@ my $sh = Term::Shell::Test->new;
 {
     $sh->run_help;
 };
-  
+
 unless (is($::called, 1, "catch_smry gets called for unknown methods"))
 {
     diag "Term::Shell did not call a custom catch_smry handler";

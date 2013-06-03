@@ -8,6 +8,7 @@ examples/psh.pl
 inc/Test/Run/Builder.pm
 lib/Term/Shell.pm
 lib/Term/Shell.pod
+scripts/bump-version-number.pl
 t/01require.t
 t/02default.t
 t/03catchsmry.t

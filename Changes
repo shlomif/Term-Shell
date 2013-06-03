@@ -1,3 +1,4 @@
+0.04  Mon  3 Jun 17:38:17 IDT 2013
     - Add an explicit version to Term::Shell::OnScopeLeave.
         - to settle the PAUSE indexer.
     - Convert t/01require.t to Test::More and strict/warnings.

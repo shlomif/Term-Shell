@@ -1,6 +1,9 @@
 Build.PL
 Changes
+LICENSE
 MANIFEST
+META.json
+META.yml                                 Module meta-data (added by MakeMaker)
 Makefile.PL
 README
 examples/old-test.pl
@@ -13,5 +16,3 @@ t/01require.t
 t/02default.t
 t/03catchsmry.t
 t/pod.t
-META.yml                                 Module meta-data (added by MakeMaker)
-META.json

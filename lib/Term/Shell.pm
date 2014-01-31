@@ -54,7 +54,7 @@ sub new {
 	$attribs->{completion_function} = $completion_handler;
     }
     elsif ($o->{API}{readline} eq 'Term::ReadLine::Perl') {
-	$readline::rl_completion_function = 
+	$readline::rl_completion_function =
 	$readline::rl_completion_function = $completion_handler;
     }
     $o->find_handlers;
@@ -217,7 +217,7 @@ sub page_internal {
     else {
 	$instructions = "enter for more, or q to quit";
     }
-    
+
     if ($lines_left > 0) {
 	local $| = 1;
 	my $l = "---line $current_line/$total_lines ($instructions)---";
@@ -601,14 +601,14 @@ sub line_parsed {
 	}
 # We do not parse outside of strings
 #	elsif ($c eq '\\') {
-#	    $arg = (defined($arg) ? $arg : '') 
+#	    $arg = (defined($arg) ? $arg : '')
 #	      . $o->process_esc(substr($args,$i+1,1));
 #	    $i++;
 #	}
 	elsif ($c =~ /\s/) {
 	    push @args, $arg if defined $arg;
 	    $arg = undef
-	} 
+	}
 	else {
 	    $arg .= substr($args,$i,1);
 	}
@@ -721,7 +721,7 @@ sub possible_actions {
     my $action = shift;
     my $type = shift;
     my $casei = $o->{API}{case_ignore} ? '(?i)' : '';
-    my @keys =	grep { $_ =~ /$casei^\Q$action\E/ } 
+    my @keys =	grep { $_ =~ /$casei^\Q$action\E/ }
 		grep { exists $o->{handlers}{$_}{$type} }
 		keys %{$o->{handlers}};
     return @keys;

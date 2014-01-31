@@ -16,3 +16,4 @@ t/01require.t
 t/02default.t
 t/03catchsmry.t
 t/pod.t
+t/style-trailing-space.t

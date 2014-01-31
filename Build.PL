@@ -14,6 +14,7 @@ my $builder = Test::Run::Builder->new(
     {
         'Data::Dumper' => 0,
         'Term::ReadLine' => 0,
+        'perl' => '5.008',
         'strict' => 0,
         'warnings' => 0,
     },

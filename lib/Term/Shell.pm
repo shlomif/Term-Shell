@@ -2,6 +2,9 @@ package Term::Shell;
 
 use strict;
 use warnings;
+
+use 5.008;
+
 use Data::Dumper;
 use Term::ReadLine;
 

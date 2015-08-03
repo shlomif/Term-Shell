@@ -627,7 +627,7 @@ line_parsed()
 Although C<run_foo()> is called with the parsed arguments from the
 command-line, you may wish to see the raw command-line. This is available
 through the line() method. If you want to retrieve the parsed line again, use
-line_parsed(). 
+line_parsed().
 
 line_parsed() accepts an optional string parameter: the line to parse. If you
 have your own line to parse, you can pass it to line_parsed() and get back a
@@ -652,7 +652,7 @@ Term::Shell uses this method internally to invoke command handlers.
 help()
 
 If you want to get the raw text of a help message, use help(). It needs the
-name of the help topic and any arguments to pass to the handler. 
+name of the help topic and any arguments to pass to the handler.
 
 Term::Shell uses this method internally to invoke help handlers.
 

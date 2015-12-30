@@ -1,7 +1,16 @@
 use strict;
 use warnings;
 
-use Test::More tests => 1;
+use Test::More;
+
+if ($^O eq 'MSWin32')
+{
+    plan skip_all => "Test gets stuck on Windows - RT #40771";
+}
+else
+{
+    plan tests => 1;
+}
 
 require Term::Shell;
 

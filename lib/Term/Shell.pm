@@ -10,7 +10,7 @@ use Term::ReadLine;
 
 use vars qw($VERSION);
 
-$VERSION = '0.06';
+$VERSION = '0.07';
 
 #=============================================================================
 # Term::Shell API methods
@@ -915,7 +915,7 @@ package Term::Shell::OnScopeLeave;
 
 use vars qw($VERSION);
 
-$VERSION = '0.06';
+$VERSION = '0.07';
 
 sub new {
     return bless [@_[1 .. $#_]], ref($_[0]) || $_[0];

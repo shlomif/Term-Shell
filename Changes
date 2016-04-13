@@ -1,3 +1,9 @@
+0.09    2016-04-13
+    - Fix the copyright holder, license and year in dist.ini/meta-data.
+        - It should be Neil Watkiss / Perl 5 / 2001
+        - https://rt.cpan.org/Ticket/Display.html?id=113735
+        - Thanks to KENTNL for the report.
+
 0.08    2016-04-13
     - Remove stray Build/_build artifacts from the distribution:
         - https://rt.cpan.org/Ticket/Display.html?id=113730

@@ -8,9 +8,7 @@ use 5.008;
 use Data::Dumper;
 use Term::ReadLine;
 
-use vars qw($VERSION);
-
-$VERSION = '0.09';
+our $VERSION = '0.09';
 
 #=============================================================================
 # Term::Shell API methods
@@ -912,10 +910,6 @@ sub comp_ {
 }
 
 package Term::Shell::OnScopeLeave;
-
-use vars qw($VERSION);
-
-$VERSION = '0.09';
 
 sub new {
     return bless [@_[1 .. $#_]], ref($_[0]) || $_[0];

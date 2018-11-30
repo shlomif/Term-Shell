@@ -15,7 +15,7 @@ before_install:
   - "perlbrew exec --with $stableperl 'dzil build --in $builddir'"
 
 install:
-  - '(cd $builddir && cpanm --quiet --notest --installdeps --skip-satisfied .)'
+  - "cpanm --quiet --notest --installdeps --skip-satisfied $builddir"
   - cpanm --notest --skip-satisfied Test::CPAN::Changes Test::Kwalitee Test::TrailingSpace
   
 language: perl

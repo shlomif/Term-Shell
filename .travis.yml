@@ -1,15 +1,28 @@
 ---
+env:
+  global:
+    - builddir=./build-CI
+    - RELEASE_TESTING=1
+    - AUTOMATED_TESTING=1
+    - EXTENDED_TESTING=1
+    - AUTHOR_TESTING=1
 before_install:
-  - export HARNESS_OPTIONS=j10:c HARNESS_TIMER=1
-  - git config --global user.name "Dist Zilla Plugin TravisCI"
-  - git config --global user.email $HOSTNAME":not-for-mail@travis-ci.org"
-install:
-  - cpanm --notest --skip-satisfied Pod::Weaver::Section::Support Test::Pod Text::Autoformat Test::TrailingSpace Dist::Zilla
-  - dzil authordeps         | cpanm --notest --skip-satisfied
-  - dzil listdeps --author  | cpanm --notest --skip-satisfied
+  - "export stableperl=`perlbrew list | tail -1`"
+  - perlbrew list
+  - "perlbrew exec --with $stableperl 'cpanm --quiet --notest --skip-satisfied Pod::Weaver::Section::Support Test::Pod Text::Autoformat Dist::Zilla'"
+  - "perlbrew exec --with $stableperl 'dzil authordeps | cpanm --quiet --notest --skip-satisfied'"
+  - "perlbrew exec --with $stableperl 'dzil listdeps --author  | cpanm --notest --skip-satisfied'"
+  - "perlbrew exec --with $stableperl 'dzil build --in $builddir'"
 
+install:
+  - '(cd $builddir && cpanm --quiet --notest --installdeps --skip-satisfied .)'
+  - cpanm --notest --skip-satisfied Test::CPAN::Changes Test::Kwalitee Test::TrailingSpace
+  
 language: perl
 perl:
+  - '5.8'
+  - '5.10'
+  - '5.12'
   - '5.14'
   - '5.16'
   - '5.18'
@@ -17,5 +30,6 @@ perl:
   - '5.22'
   - '5.24'
   - '5.26'
+  - '5.28'
 script:
-  - dzil test --all
+   - '(cd $builddir && prove -lr t)'

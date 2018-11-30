@@ -3,12 +3,12 @@ package Term::Shell;
 use strict;
 use warnings;
 
-use 5.008;
+use 5.014;
 
 use Data::Dumper;
-use Term::ReadLine;
+use Term::ReadLine ();
 
-our $VERSION = '0.09';
+our $VERSION = '0.10';
 
 #=============================================================================
 # Term::Shell API methods
@@ -27,7 +27,8 @@ sub new
         }
             || undef,
         },
-        ref($cls) || $cls;
+        ref($cls)
+        || $cls;
 
     # Set up the API hash:
     $o->{command} = {};

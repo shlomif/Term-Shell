@@ -1,3 +1,11 @@
+0.10    2018-12-22
+    - Convert dist.ini to @SHLOMIF .
+    - Add .travis.yml / Travis-CI
+        - https://github.com/shlomif/Term-Shell/pull/1
+        - Thanks to https://github.com/jluis
+    - Bump minimal required version of perl to 5.014.
+        - https://github.com/shlomif/supporting-older-perl5-releases/blob/master/about-supporting-older-perl5-releases.pod
+
 0.09    2016-04-13
     - Fix the copyright holder, license and year in dist.ini/meta-data.
         - It should be Neil Watkiss / Perl 5 / 2001

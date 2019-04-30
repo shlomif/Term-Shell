@@ -303,19 +303,19 @@ sub summary
 #=============================================================================
 sub add_handlers
 {
-    my $o = shift;
+    my $o     = shift;
     my $match = sub {
-        if (my ($ret)= shift =~ /\A(run|help|smry|comp|catch|alias)_/)
+        if ( my ($ret) = shift =~ /\A(run|help|smry|comp|catch|alias)_/ )
         {
             return $ret;
         }
         return;
     };
-    LOOP1:
+LOOP1:
     for my $hnd (@_)
     {
         my $t = $match->($hnd);
-        next LOOP1 if !defined$t;
+        next LOOP1 if !defined $t;
         my $s = substr( $hnd, length($t) + 1 );
 
         # Add on the prefix and suffix if the command is defined
@@ -326,11 +326,11 @@ sub add_handlers
         }
         $o->{handlers}{$s}{$t} = $hnd;
     }
-    LOOP2:
+LOOP2:
     for my $hnd (@_)
     {
         my $t = $match->($hnd);
-        next LOOP2 if !defined$t;
+        next LOOP2 if !defined $t;
         my $s = substr( $hnd, length($t) + 1 );
 
         # Add on the prefix and suffix if the command is defined
@@ -464,12 +464,11 @@ TERMSIZE:
 
         {
             local $^W;
-            local *STTY;
-            if ( open( STTY, "stty size |" ) )
+            if ( open( my $STTY, "-|", "stty", "size" ) )
             {
-                my $l = <STTY>;
+                my $l = <$STTY>;
                 ( $rows, $cols ) = split /\s+/, $l;
-                close STTY;
+                close $STTY;
             }
         }
     }
@@ -544,7 +543,7 @@ sub prompt
     my $line;
     my $readline = sub {
         my ( $sh, $gh ) = @{ $term->Features }{qw(setHistory getHistory)};
-        my @history = $term->GetHistory if $gh;
+        my @history = $gh ? $term->GetHistory : ();
         $term->SetHistory() if $sh;
         $line = $o->readline($prompt);
         $line = $default
@@ -766,7 +765,7 @@ sub handler
             return $o->unalias( $handlers[0], $type );
         }
     }
-    return undef;
+    return;
 }
 
 sub completions
@@ -923,6 +922,7 @@ sub find_handlers
     # Find the handlers in the given namespace:
     my %handlers;
     {
+        ## no critic
         no strict 'refs';
         my @r = keys %{ $pkg . "::" };
         $o->add_handlers(@r);
@@ -930,6 +930,7 @@ sub find_handlers
 
     # Find handlers in its base classes.
     {
+        ## no critic
         no strict 'refs';
         my @isa = @{ $pkg . "::ISA" };
         for my $pkg (@isa)

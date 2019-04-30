@@ -317,6 +317,19 @@ sub add_handlers
             $a .= $o->cmd_suffix;
         }
         $o->{handlers}{$a}{$t} = $hnd;
+    }
+    for my $hnd (@_)
+    {
+        next unless $hnd =~ /^(run|help|smry|comp|catch|alias)_/o;
+        my $t = $1;
+        my $a = substr( $hnd, length($t) + 1 );
+
+        # Add on the prefix and suffix if the command is defined
+        if ( length $a )
+        {
+            substr( $a, 0, 0 ) = $o->cmd_prefix;
+            $a .= $o->cmd_suffix;
+        }
         if ( $o->has_aliases($a) )
         {
             my @a = $o->get_aliases($a);

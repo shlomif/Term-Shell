@@ -304,36 +304,45 @@ sub summary
 sub add_handlers
 {
     my $o = shift;
+    my $match = sub {
+        if (my ($ret)= shift =~ /\A(run|help|smry|comp|catch|alias)_/)
+        {
+            return $ret;
+        }
+        return;
+    };
+    LOOP1:
     for my $hnd (@_)
     {
-        next unless $hnd =~ /^(run|help|smry|comp|catch|alias)_/o;
-        my $t = $1;
-        my $a = substr( $hnd, length($t) + 1 );
+        my $t = $match->($hnd);
+        next LOOP1 if !defined$t;
+        my $s = substr( $hnd, length($t) + 1 );
 
         # Add on the prefix and suffix if the command is defined
-        if ( length $a )
+        if ( length $s )
         {
-            substr( $a, 0, 0 ) = $o->cmd_prefix;
-            $a .= $o->cmd_suffix;
+            substr( $s, 0, 0 ) = $o->cmd_prefix;
+            $s .= $o->cmd_suffix;
         }
-        $o->{handlers}{$a}{$t} = $hnd;
+        $o->{handlers}{$s}{$t} = $hnd;
     }
+    LOOP2:
     for my $hnd (@_)
     {
-        next unless $hnd =~ /^(run|help|smry|comp|catch|alias)_/o;
-        my $t = $1;
-        my $a = substr( $hnd, length($t) + 1 );
+        my $t = $match->($hnd);
+        next LOOP2 if !defined$t;
+        my $s = substr( $hnd, length($t) + 1 );
 
         # Add on the prefix and suffix if the command is defined
-        if ( length $a )
+        if ( length $s )
         {
-            substr( $a, 0, 0 ) = $o->cmd_prefix;
-            $a .= $o->cmd_suffix;
+            substr( $s, 0, 0 ) = $o->cmd_prefix;
+            $s .= $o->cmd_suffix;
         }
-        if ( $o->has_aliases($a) )
+        if ( $o->has_aliases($s) )
         {
-            my @a = $o->get_aliases($a);
-            for my $alias (@a)
+            my @s = $o->get_aliases($s);
+            for my $alias (@s)
             {
                 substr( $alias, 0, 0 ) = $o->cmd_prefix;
                 $alias .= $o->cmd_suffix;

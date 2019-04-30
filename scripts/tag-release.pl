@@ -6,7 +6,7 @@ use warnings;
 use IO::All qw/ io /;
 
 my ($version) =
-    ( map { m{\Aversion *= (*[0-9\.]+)\z} ? ($1) : () }
+    ( map { m{\Aversion *= *([0-9\.]+)\Z} ? ($1) : () }
         io->file("./dist.ini")->getlines() );
 
 if ( !defined($version) )

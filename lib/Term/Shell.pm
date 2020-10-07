@@ -35,15 +35,15 @@ sub new
     $o->{API}     = {
         args        => \@_,
         case_ignore => ( $^O eq 'MSWin32' ? 1 : 0 ),
-        check_idle => 0,                         # changing this isn't supported
-        class      => $cls,
-        command    => $o->{command},
-        cmd        => $o->{command},             # shorthand
-        match_uniq => 1,
-        pager      => $ENV{PAGER} || 'internal',
-        readline => eval { $o->{term}->ReadLine } || 'none',
-        script   => ( caller(0) )[1],
-        version  => $VERSION,
+        check_idle  => 0,                # changing this isn't supported
+        class       => $cls,
+        command     => $o->{command},
+        cmd         => $o->{command},    # shorthand
+        match_uniq  => 1,
+        pager       => $ENV{PAGER}                   || 'internal',
+        readline    => eval { $o->{term}->ReadLine } || 'none',
+        script      => ( caller(0) )[1],
+        version     => $VERSION,
     };
 
     # Note: the rl_completion_function doesn't pass an object as the first
@@ -256,8 +256,8 @@ sub page_internal
         print $l;
         my $ans = $o->readkey;
         print "\r$b\r" if $o->have_readkey;
-        print "\n" if $ans =~ /q/i or not $o->have_readkey;
-        $line = -1 if $ans =~ /q/i;
+        print "\n"     if $ans =~ /q/i or not $o->have_readkey;
+        $line = -1     if $ans =~ /q/i;
     }
     $line;
 }
@@ -589,6 +589,7 @@ sub format_pairs
     my $ind  = shift || "";
     my $len  = shift || 0;
     my $wrap = shift || 0;
+
     if ($wrap)
     {
         eval {
@@ -611,7 +612,7 @@ sub format_pairs
     {
         next unless defined $vals[$i];
         my $sz   = ( $len - length( $keys[$i] ) );
-        my $lpad = $left ? "" : " " x $sz;
+        my $lpad = $left ? ""        : " " x $sz;
         my $rpad = $left ? " " x $sz : "";
         my $l    = "$ind$lpad$keys[$i]$rpad$sep";
         my $wrap = $wrap & ( $vals[$i] =~ /\s/ and $vals[$i] !~ /^\d/ );
@@ -811,8 +812,8 @@ sub do_action
     my $type = shift || 'run';
     my ( $fullname, $cmdname, $handler ) = $o->handler( $cmd, $type, $args );
     $o->{command}{$type} = {
-        cmd  => $cmd,
-        name => $cmd,
+        cmd     => $cmd,
+        name    => $cmd,
         found   => defined $handler ? 1 : 0,
         cmdfull => $fullname,
         cmdreal => $cmdname,

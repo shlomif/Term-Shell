@@ -2079,12 +2079,6 @@ The name of the script that invoked your shell.
 
 The version of Term::Shell you are running under.
 
-=head1 BUGS AND DEFICIENCIES
-
-There are bound to be some bugs lurking about.
-
-If you find bugs, please send them to C<NEILW@cpan.org>.
-
 =head1 SEE ALSO
 
 For more information about the underlying ReadLine module, see
@@ -2097,7 +2091,7 @@ L<Text::Autoformat>.
 The API for Term::Shell was inspired by (gasp!) a Python package called
 C<cmd>. For more information about this package, please look in the Python
 Library Reference, either in your Python distribution or at
-http://www.python.org/doc/current/lib/module-cmd.html
+L<https://docs.python.org/3/library/cmd.html> .
 
 =head1 AUTHOR
 
@@ -2113,4 +2107,3 @@ redistributed and/or modified under the same terms as Perl itself.
 See http://www.perl.com/perl/misc/Artistic.html
 
 =cut
-

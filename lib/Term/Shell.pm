@@ -8,8 +8,6 @@ use 5.014;
 use Data::Dumper;
 use Term::ReadLine ();
 
-our $VERSION = '0.10';
-
 #=============================================================================
 # Term::Shell API methods
 #=============================================================================
@@ -43,7 +41,7 @@ sub new
         pager       => $ENV{PAGER}                   || 'internal',
         readline    => eval { $o->{term}->ReadLine } || 'none',
         script      => ( caller(0) )[1],
-        version     => $VERSION,
+        version     => $Term::Shell::VERSION,
     };
 
     # Note: the rl_completion_function doesn't pass an object as the first
@@ -59,8 +57,8 @@ sub new
     }
     elsif ( $o->{API}{readline} eq 'Term::ReadLine::Perl' )
     {
-        $readline::rl_completion_function =
-            $readline::rl_completion_function = $completion_handler;
+        $readline::rl_completion_function = $readline::rl_completion_function =
+            $completion_handler;
     }
     $o->find_handlers;
     $o->init;

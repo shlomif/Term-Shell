@@ -8,7 +8,7 @@ use 5.014;
 use Data::Dumper;
 use Term::ReadLine ();
 
-our $VERSION = '0.10';
+our $VERSION = '0.12';
 
 #=============================================================================
 # Term::Shell API methods
